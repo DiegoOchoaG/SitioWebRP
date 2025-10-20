@@ -1,0 +1,260 @@
+/* ------------------------ */
+/* ESTILOS GENERALES */
+/* ------------------------ */
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  margin: 0;
+  background-color: #f5f7fa;
+  color: #222;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+  color: #002c6e;
+  margin-top: 0;
+}
+
+.subtitulo {
+  color: #009fe3;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* ------------------------ */
+/* HEADER Y MENÚ */
+/* ------------------------ */
+header {
+  background-color: #002c6e;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.3rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* NAV NORMAL */
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav li {
+  margin-left: 20px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #00b4ff;
+}
+
+/* ------------------------ */
+/* MENÚ HAMBURGUESA SIN JS */
+/* ------------------------ */
+.menu-checkbox {
+  display: none;
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 21px;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Efecto animado al activar */
+.menu-checkbox:checked + .menu-toggle span:nth-child(1) {
+  transform: rotate(45deg) translateY(8px);
+}
+
+.menu-checkbox:checked + .menu-toggle span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-checkbox:checked + .menu-toggle span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-8px);
+}
+
+/* Menú oculto por defecto en móviles */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  nav {
+    display: block;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: #002c6e;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+  }
+
+  .menu-checkbox:checked ~ nav {
+    max-height: 500px;
+    animation: fadeDown 0.3s ease;
+  }
+
+  nav ul {
+    flex-direction: column;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+  }
+
+  nav li {
+    margin: 12px 0;
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+/* ------------------------ */
+/* CONTENIDO PRINCIPAL */
+/* ------------------------ */
+section, article, aside {
+  padding: 40px 15%;
+  background-color: white;
+  margin: 20px 0;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+figure {
+  text-align: center;
+  margin: 40px auto;
+}
+
+img, iframe {
+  width: 80%;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+
+figcaption {
+  font-style: italic;
+  margin-top: 10px;
+}
+
+/* ------------------------ */
+/* FOOTER */
+/* ------------------------ */
+footer {
+  background-color: #01162c;
+  color: white;
+  padding: 50px 10%;
+  text-align: left;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  margin-bottom: 30px;
+}
+
+.footer-col h4 {
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 15px;
+  position: relative;
+}
+
+.footer-col h4::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 2px;
+  background-color: #00b4ff;
+  margin-top: 6px;
+}
+
+.footer-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-col li {
+  margin: 8px 0;
+}
+
+.footer-col a {
+  text-decoration: none;
+  color: #d9e2f2;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+.footer-col a:hover {
+  color: #00b4ff;
+}
+
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid #003b73;
+  padding-top: 15px;
+  font-size: 13px;
+  color: #cfd9e6;
+}
+
+/* ------------------------ */
+/* RESPONSIVIDAD */
+/* ------------------------ */
+@media (max-width: 768px) {
+  section, article, aside {
+    padding: 20px;
+  }
+
+  img, iframe {
+    width: 100%;
+  }
+
+  footer {
+    padding: 40px 5%;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+  }
+}
